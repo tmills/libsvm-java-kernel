@@ -16,25 +16,25 @@ import java.util.List;
  */
 public class SVMTrainer {
     
-    private static svm_problem prepareProblem(List<Instance> instances) {
-        Instance[] array = new Instance[instances.size()];
-        array = instances.toArray(array);
-        return prepareProblem(array);
+//    private static <K> svm_problem prepareProblem(List<Instance<K>> instances) {
+//        Instance<K>[] array = new Instance[instances.size()];
+//        array = instances.toArray(array);
+//        return prepareProblem(array);
+//    }
+    
+    private static <K> svm_problem prepareProblem(List<Instance<K>> instances) {
+        return prepareProblem(instances, 0, instances.size() - 1);
     }
     
-    private static svm_problem prepareProblem(Instance[] instances) {
-        return prepareProblem(instances, 0, instances.length - 1);
-    }
-    
-    private static svm_problem prepareProblem(Instance[] instances, int begin, int end) {
+    private static <K> svm_problem prepareProblem(List<Instance<K>> instances, int begin, int end) {
         svm_problem prob = new svm_problem();
         prob.l = (end - begin) + 1;
         prob.y = new double[prob.l];
         prob.x = new svm_node[prob.l];
         
         for (int i = begin; i <= end; i++) {
-            prob.y[i-begin] = instances[i].getLabel();
-            prob.x[i-begin] = new svm_node(instances[i].getData());
+            prob.y[i-begin] = instances.get(i).getLabel();
+            prob.x[i-begin] = new svm_node<K>(instances.get(i).getData());
         }
         return prob;
     }
@@ -45,7 +45,7 @@ public class SVMTrainer {
      * @param param
      * @return 
      */
-    public static svm_model train(Instance[] instances, svm_parameter param) {
+    public static <K> svm_model train(List<Instance<K>> instances, svm_parameter param) {
         //prepare svm_problem
         svm_problem prob = prepareProblem(instances);
         
@@ -59,11 +59,8 @@ public class SVMTrainer {
         return svm.svm_train(prob, param);
     }
     
-    public static svm_model train(List<Instance> instances, svm_parameter param) {
-        Instance[] array = new Instance[instances.size()];
-        array = instances.toArray(array);
-        return train(array, param);
-    }
+//    public static <K> svm_model train(List<Instance<K>> instances, svm_parameter param) {
+//    }
     
     /**
      * Performs N-fold cross validation
@@ -72,7 +69,7 @@ public class SVMTrainer {
      * @param nr_fold number of folds (N)
      * @param binary whether doing binary classification
      */
-    public static void doCrossValidation(Instance[] instances, svm_parameter param, int nr_fold, boolean binary) {
+    public static <K> void doCrossValidation(List<Instance<K>> instances, svm_parameter param, int nr_fold, boolean binary) {
         svm_problem prob = prepareProblem(instances);
         
         int i;
@@ -126,8 +123,8 @@ public class SVMTrainer {
         }
     }
         
-    public static void doInOrderCrossValidation(Instance[] instances, svm_parameter param, int nr_fold, boolean binary) {        
-        int size = instances.length;
+    public static <K> void doInOrderCrossValidation(List<Instance<K>> instances, svm_parameter param, int nr_fold, boolean binary) {        
+        int size = instances.size();
         int chunkSize = size/nr_fold;
         int begin = 0;
         int end = chunkSize - 1;
@@ -138,13 +135,13 @@ public class SVMTrainer {
         
         for (int i = 0; i < nr_fold; i++) {
             System.out.println("Iteration: " + (i+1));
-            List<Instance> trainingInstances = new ArrayList<Instance>();
-            List<Instance> testingInstances = new ArrayList<Instance>();
+            List<Instance<K>> trainingInstances = new ArrayList<Instance<K>>();
+            List<Instance<K>> testingInstances = new ArrayList<Instance<K>>();
             for (int j = 0; j < size; j++) {
                 if (j >= begin && j <= end) {
-                    testingInstances.add(instances[j]);
+                    testingInstances.add(instances.get(j));
                 } else {
-                    trainingInstances.add(instances[j]);
+                    trainingInstances.add(instances.get(j));
                 }
             }                                    
             

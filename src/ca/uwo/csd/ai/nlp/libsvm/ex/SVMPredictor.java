@@ -12,24 +12,24 @@ import java.util.List;
  */
 public class SVMPredictor {
 
-    public static double[] predict(List<Instance> instances, svm_model model) {
+    public static <K> double[] predict(List<Instance<K>> instances, svm_model model) {
         return predict(instances, model, true);
     }
 
-    public static double[] predict(List<Instance> instances, svm_model model, boolean displayResult) {
-        Instance[] array = new Instance[instances.size()];
-        array = instances.toArray(array);
-        return predict(array, model, displayResult);
-    }
+//    public static <K> double[] predict(List<Instance<K>> instances, svm_model model, boolean displayResult) {
+//        Instance[] array = new Instance[instances.size()];
+//        array = instances.toArray(array);
+//        return predict(array, model, displayResult);
+//    }
 
-    public static double predict(Instance instance, svm_model model, boolean displayResult) {
-        return svm.svm_predict(model, new svm_node(instance.getData()));
+    public static <K> double predict(Instance<K> instance, svm_model model, boolean displayResult) {
+        return svm.svm_predict(model, new svm_node<K>(instance.getData()));
     }
     
-    public static double predictProbability(Instance instance, svm_model model, double[] probabilities) {
-        return svm.svm_predict_probability(model, new svm_node(instance.getData()), probabilities);
+    public static <K> double predictProbability(Instance<K> instance, svm_model model, double[] probabilities) {
+        return svm.svm_predict_probability(model, new svm_node<K>(instance.getData()), probabilities);
     }    
-    public static double[] predict(Instance[] instances, svm_model model, boolean displayResult) {
+    public static <K> double[] predict(List<Instance<K>> instances, svm_model model, boolean displayResult) {
         int total = 0;
         int correct = 0;
 
@@ -38,12 +38,12 @@ public class SVMPredictor {
         int fn = 0;
 
         boolean binary = model.nr_class == 2;
-        double[] predictions = new double[instances.length];
+        double[] predictions = new double[instances.size()];
         int count = 0;
 
-        for (Instance instance : instances) {
+        for (Instance<K> instance : instances) {
             double target = instance.getLabel();
-            double p = svm.svm_predict(model, new svm_node(instance.getData()));
+            double p = svm.svm_predict(model, new svm_node<K>(instance.getData()));
             predictions[count++] = p;
 
             ++total;

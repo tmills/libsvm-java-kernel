@@ -4,20 +4,20 @@ package ca.uwo.csd.ai.nlp.libsvm.ex;
  *
  * @author Syeed Ibn Faiz
  */
-public class Instance {
+public class Instance<K> {
     private double label;
-    private Object data;
+    private K data;
 
-    public Instance(double label, Object data) {
+    public Instance(double label, K data) {
         this.label = label;
         this.data = data;
     }
 
-    public Object getData() {
+    public K getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(K data) {
         this.data = data;
     }
 

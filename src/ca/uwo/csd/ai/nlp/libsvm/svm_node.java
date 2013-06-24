@@ -1,13 +1,13 @@
 package ca.uwo.csd.ai.nlp.libsvm;
 
-public class svm_node implements java.io.Serializable {
+public class svm_node<K> implements java.io.Serializable {
 
-    public Object data;
+    public K data;
 
     public svm_node() {
     }
 
-    public svm_node(Object data) {
+    public svm_node(K data) {
         this.data = data;
     }        
 }

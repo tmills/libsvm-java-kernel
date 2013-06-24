@@ -13,7 +13,7 @@ import ca.uwo.csd.ai.nlp.libsvm.ex.Instance;
  */
 public class DataFileReader {
     
-    public static Instance[] readDataFile(String fileName) throws IOException {
+    public static Instance<SparseVector>[] readDataFile(String fileName) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fileName));        
         
         ArrayList<Double> labels = new ArrayList<Double>();
@@ -47,10 +47,11 @@ public class DataFileReader {
             
             vectors.add(vector);
         }                
+        reader.close();
         
-        Instance[] instances = new Instance[labels.size()];
+        Instance<SparseVector>[] instances = new Instance[labels.size()];
         for (int i = 0; i < instances.length; i++) {
-            instances[i] = new Instance(labels.get(i), vectors.get(i));
+            instances[i] = new Instance<SparseVector>(labels.get(i), vectors.get(i));
         }
         
         return instances;
