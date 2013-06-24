@@ -2,14 +2,17 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+
+import utils.DataFileReader;
+import ca.uwo.csd.ai.nlp.common.SparseVector;
 import ca.uwo.csd.ai.nlp.kernel.KernelManager;
 import ca.uwo.csd.ai.nlp.kernel.LinearKernel;
+import ca.uwo.csd.ai.nlp.libsvm.svm_model;
+import ca.uwo.csd.ai.nlp.libsvm.svm_parameter;
 import ca.uwo.csd.ai.nlp.libsvm.ex.Instance;
 import ca.uwo.csd.ai.nlp.libsvm.ex.SVMPredictor;
 import ca.uwo.csd.ai.nlp.libsvm.ex.SVMTrainer;
-import ca.uwo.csd.ai.nlp.libsvm.svm_model;
-import ca.uwo.csd.ai.nlp.libsvm.svm_parameter;
-import utils.DataFileReader;
 
 /**
  * Demonstration of sample usage
@@ -23,7 +26,7 @@ public class Demo {
         String outputFileName = args[2];
         
         //Read training file
-        Instance[] trainingInstances = DataFileReader.readDataFile(trainFileName);        
+        List<Instance<SparseVector>> trainingInstances = DataFileReader.readDataFile(trainFileName);        
         
         //Register kernel function
         KernelManager.setCustomKernel(new LinearKernel());        
@@ -41,7 +44,7 @@ public class Demo {
         //model = SVMPredictor.load_model("a1a.model");
         
         //Read test file
-        Instance[] testingInstances = DataFileReader.readDataFile(testFileName);
+        List<Instance<SparseVector>> testingInstances = DataFileReader.readDataFile(testFileName);
         //Predict results
         double[] predictions = SVMPredictor.predict(testingInstances, model, true);
         writeOutputs(outputFileName, predictions);

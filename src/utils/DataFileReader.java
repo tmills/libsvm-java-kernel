@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import ca.uwo.csd.ai.nlp.libsvm.ex.Instance;
 
 /**
@@ -13,11 +15,10 @@ import ca.uwo.csd.ai.nlp.libsvm.ex.Instance;
  */
 public class DataFileReader {
     
-    public static Instance<SparseVector>[] readDataFile(String fileName) throws IOException {
+    public static List<Instance<SparseVector>> readDataFile(String fileName) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fileName));        
         
-        ArrayList<Double> labels = new ArrayList<Double>();
-        ArrayList<SparseVector> vectors = new ArrayList<SparseVector>();
+        ArrayList<Instance<SparseVector>> instances = new ArrayList<Instance<SparseVector>>();
         
         String line;
         int lineCount = 0;
@@ -30,7 +31,7 @@ public class DataFileReader {
                 System.exit(-1);
             }
             
-            labels.add(Double.parseDouble(tokens[0]));            
+            double label = Double.parseDouble(tokens[0]);
             SparseVector vector = new SparseVector(tokens.length - 1);
             
             for (int i = 1; i < tokens.length; i++) {
@@ -45,15 +46,9 @@ public class DataFileReader {
                 vector.add(index, value);
             }
             
-            vectors.add(vector);
+            instances.add(new Instance<SparseVector>(label, vector));
         }                
-        reader.close();
-        
-        Instance<SparseVector>[] instances = new Instance[labels.size()];
-        for (int i = 0; i < instances.length; i++) {
-            instances[i] = new Instance<SparseVector>(labels.get(i), vectors.get(i));
-        }
-        
+        reader.close();       
         return instances;
     }
 }
