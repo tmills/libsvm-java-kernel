@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.chboston.cnlp</groupId>
   <artifactId>libsvm-java-kernel</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0</version>
   <build>
     <plugins>
       <plugin>
@@ -13,7 +13,20 @@
           <target/>
         </configuration>
       </plugin>
-    </plugins>
+      <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-gpg-plugin</artifactId>
+       <executions>
+         <execution>
+           <id>sign-artifacts</id>
+           <phase>verify</phase>
+           <goals>
+             <goal>sign</goal>
+           </goals>
+         </execution>
+       </executions>
+     </plugin>
+   </plugins>
   </build>
   <name>libsvm-java-kernel</name>
   <description>This project is a fork of libsvm and a project on github called libsvm-java-kernel. Its goal is to facilitate development of tree kernel methods in java. It modifies the java implementation of libsvm to allow for generic instance types, so that the kernel can be a tree kernel, string kernel, etc.</description>
