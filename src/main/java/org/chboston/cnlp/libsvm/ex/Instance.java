@@ -1,4 +1,4 @@
-package ca.uwo.csd.ai.nlp.libsvm.ex;
+package org.chboston.cnlp.libsvm.ex;
 
 /**
  *

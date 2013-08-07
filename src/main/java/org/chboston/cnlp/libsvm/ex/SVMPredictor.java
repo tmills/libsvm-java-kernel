@@ -1,10 +1,11 @@
-package ca.uwo.csd.ai.nlp.libsvm.ex;
+package org.chboston.cnlp.libsvm.ex;
 
-import ca.uwo.csd.ai.nlp.libsvm.svm;
-import ca.uwo.csd.ai.nlp.libsvm.svm_model;
-import ca.uwo.csd.ai.nlp.libsvm.svm_node;
 import java.io.IOException;
 import java.util.List;
+
+import org.chboston.cnlp.libsvm.svm;
+import org.chboston.cnlp.libsvm.svm_model;
+import org.chboston.cnlp.libsvm.svm_node;
 
 /**
  *

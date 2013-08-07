@@ -1,15 +1,16 @@
-package ca.uwo.csd.ai.nlp.libsvm.ex;
+package org.chboston.cnlp.libsvm.ex;
 
 
-import ca.uwo.csd.ai.nlp.libsvm.svm;
-import ca.uwo.csd.ai.nlp.libsvm.svm_model;
-import ca.uwo.csd.ai.nlp.libsvm.svm_node;
-import ca.uwo.csd.ai.nlp.libsvm.svm_parameter;
-import ca.uwo.csd.ai.nlp.libsvm.svm_problem;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.chboston.cnlp.libsvm.svm;
+import org.chboston.cnlp.libsvm.svm_model;
+import org.chboston.cnlp.libsvm.svm_node;
+import org.chboston.cnlp.libsvm.svm_parameter;
+import org.chboston.cnlp.libsvm.svm_problem;
 
 /**
  * <code>SVMTrainer</code> performs training of an SVM.

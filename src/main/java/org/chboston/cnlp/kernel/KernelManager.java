@@ -1,4 +1,4 @@
-package ca.uwo.csd.ai.nlp.kernel;
+package org.chboston.cnlp.kernel;
 
 /**
  * <code>KernelManager</code> provides the custom kernel function to <code>svm</code>.

@@ -1,4 +1,4 @@
-package ca.uwo.csd.ai.nlp.libsvm;
+package org.chboston.cnlp.libsvm;
 
 public interface svm_print_interface {
 

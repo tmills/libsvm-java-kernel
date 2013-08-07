@@ -1,6 +1,6 @@
-package ca.uwo.csd.ai.nlp.kernel;
+package org.chboston.cnlp.kernel;
 
-import ca.uwo.csd.ai.nlp.libsvm.svm_node;
+import org.chboston.cnlp.libsvm.svm_node;
 
 /**
  * Interface for a custom kernel function

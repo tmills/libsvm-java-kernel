@@ -1,9 +1,10 @@
-package ca.uwo.csd.ai.nlp.libsvm;
+package org.chboston.cnlp.libsvm;
 
-import ca.uwo.csd.ai.nlp.kernel.KernelManager;
-import ca.uwo.csd.ai.nlp.kernel.CustomKernel;
 import java.io.*;
 import java.util.*;
+
+import org.chboston.cnlp.kernel.CustomKernel;
+import org.chboston.cnlp.kernel.KernelManager;
 
 //
 // Kernel Cache

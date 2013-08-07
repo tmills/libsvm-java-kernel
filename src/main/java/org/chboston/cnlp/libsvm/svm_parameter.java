@@ -1,4 +1,4 @@
-package ca.uwo.csd.ai.nlp.libsvm;
+package org.chboston.cnlp.libsvm;
 
 public class svm_parameter implements Cloneable, java.io.Serializable {
     /* svm_type */
