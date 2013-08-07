@@ -40,8 +40,9 @@
   </license>
   </licenses>
   <scm>
-  	<connection>git@github.com:tmills/libsvm-java-kernel.git</connection>
-  	<url>https://github.com/tmills/libsvm-java-kernel</url>
+  	<connection>scm:git:git@github.com:tmills/libsvm-java-kernel.git</connection>
+  	<url>git@github.com:tmills/libsvm-java-kernel.git</url>
+  	<developerConnection>scm:git:git@github.com:tmills/libsvm-java-kernel.git</developerConnection>
   </scm>
   <developers>
     <developer>
@@ -50,4 +51,9 @@
       <email>tim.miller@gmail.com</email>
     </developer>
   </developers>
+  <parent>
+  	<groupId>org.sonatype.oss</groupId>
+  	<artifactId>oss-parent</artifactId>
+  	<version>7</version>
+  </parent>
 </project>
