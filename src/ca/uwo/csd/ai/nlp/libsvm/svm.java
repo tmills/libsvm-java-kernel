@@ -1865,6 +1865,25 @@ public class svm {
             }
         }
 
+        //
+        // Labels are ordered by their first occurrence in the training set. 
+        // However, for two-class sets with -1/+1 labels and -1 appears first, 
+        // we swap labels to ensure that internally the binary SVM has positive data corresponding to the +1 instances.
+        //
+        if (nr_class == 2 && label[0] == -1 && label[1] == +1)
+        {
+                do {int _=label[0]; label[0]=label[1]; label[1]=_;} while(false);
+                do {int _=count[0]; count[0]=count[1]; count[1]=_;} while(false);
+                for(i=0;i<l;i++)
+                {
+                        if(data_label[i] == 0)
+                                data_label[i] = 1;
+                        else
+                                data_label[i] = 0;
+                }
+        }
+
+        
         int[] start = new int[nr_class];    //begin of each class
         start[0] = 0;
         for (i = 1; i < nr_class; i++) {
