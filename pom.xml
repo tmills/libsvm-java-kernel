@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>libsvm-java-kernel</groupId>
+  <groupId>org.chboston.cnlp</groupId>
   <artifactId>libsvm-java-kernel</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
@@ -15,4 +15,26 @@
       </plugin>
     </plugins>
   </build>
+  <name>libsvm-java-kernel</name>
+  <description>This project is a fork of libsvm and a project on github called libsvm-java-kernel. Its goal is to facilitate development of tree kernel methods in java. It modifies the java implementation of libsvm to allow for generic instance types, so that the kernel can be a tree kernel, string kernel, etc.</description>
+  <url>https://github.com/tmills/libsvm-java-kernel</url>
+  <licenses>
+  <license>
+    <name>Modified BSD License</name>
+    <url>http://opensource.org/licenses/BSD-3-Clause</url>
+    <comments>Apache and GNU compatible - Following license of original LibSVM project</comments>
+    <distribution>repo</distribution>    
+  </license>
+  </licenses>
+  <scm>
+  	<connection>git@github.com:tmills/libsvm-java-kernel.git</connection>
+  	<url>https://github.com/tmills/libsvm-java-kernel</url>
+  </scm>
+  <developers>
+    <developer>
+      <id>tmill</id>
+	    <name>Tim Miller</name>
+      <email>tim.miller@gmail.com</email>
+    </developer>
+  </developers>
 </project>
