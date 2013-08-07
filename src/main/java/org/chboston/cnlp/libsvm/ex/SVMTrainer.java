@@ -15,6 +15,7 @@ import org.chboston.cnlp.libsvm.svm_problem;
 /**
  * <code>SVMTrainer</code> performs training of an SVM.
  * @author Syeed Ibn Faiz
+ * @author Tim Miller
  */
 public class SVMTrainer {
     

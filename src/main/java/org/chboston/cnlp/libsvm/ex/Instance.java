@@ -3,6 +3,7 @@ package org.chboston.cnlp.libsvm.ex;
 /**
  *
  * @author Syeed Ibn Faiz
+ * @author Tim Miller
  */
 public class Instance<K> {
     private double label;

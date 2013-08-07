@@ -10,6 +10,7 @@ import org.chboston.cnlp.libsvm.svm_node;
 /**
  *
  * @author Syeed Ibn Faiz
+ * @author Tim Miller
  */
 public class SVMPredictor {
 
