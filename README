@@ -1,19 +1,20 @@
-This project is intended to allow for java-only development of tree kernel algorithms in
-a support vector machine framework. The project is a fork of the libsvm-java-kernel project 
-on Github by Syeed Ibn Faiz. That project is in turn a fork of libsvm. 
+This project is intended to allow for java-only development of tree kernel
+algorithms in a support vector machine framework. The project is a fork of the 
+libsvm-java-kernel project on Github by Syeed Ibn Faiz. That project is in turn
+a fork of libsvm. 
 
-My thanks go to Syeed who did most of the initial work of making libsvm compatible with 
-generic instance types, which made tree kernel work possible. And of course the java-based
-version of libsvm is a great resource. My purpose in forking this project is to create a 
-new version which can be submitted to Maven central for ease of inclusion by other open
-source projects. To that end I have maven-ized the layout, as well as making some minor
-architectural changes and removing classes that aren't strictly necessary to the purposes
+My thanks go to Syeed who did most of the initial work of making libsvm 
+compatible with generic instance types, which made tree kernel work possible. 
+And of course the java-based version of libsvm is a great resource. My purpose 
+in forking this project is to create a new version which can be submitted to
+Maven central for ease of inclusion by other open source projects. To that end 
+I have maven-ized the layout, as well as making some minor architectural 
+changes and removing classes that aren't strictly necessary to the purposes
 needed for my own research.
 
 Any contributions to this project would be welcomed.
 
 Licensing follows the libsvm license.
-
 
 For more information on the projects from which this project derives:
 Libsvm:
