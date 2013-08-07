@@ -9,5 +9,5 @@ public class svm_node<K> implements java.io.Serializable {
 
     public svm_node(K data) {
         this.data = data;
-    }        
+    }
 }

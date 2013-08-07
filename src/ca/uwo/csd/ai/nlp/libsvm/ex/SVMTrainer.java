@@ -7,6 +7,7 @@ import ca.uwo.csd.ai.nlp.libsvm.svm_node;
 import ca.uwo.csd.ai.nlp.libsvm.svm_parameter;
 import ca.uwo.csd.ai.nlp.libsvm.svm_problem;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +23,12 @@ public class SVMTrainer {
 //        return prepareProblem(array);
 //    }
     
-    private static <K> svm_problem prepareProblem(List<Instance<K>> instances) {
+    private static <K> svm_problem<K> prepareProblem(List<Instance<K>> instances) {
         return prepareProblem(instances, 0, instances.size() - 1);
     }
     
-    private static <K> svm_problem prepareProblem(List<Instance<K>> instances, int begin, int end) {
-        svm_problem prob = new svm_problem();
+    private static <K> svm_problem<K> prepareProblem(List<Instance<K>> instances, int begin, int end) {
+        svm_problem<K> prob = new svm_problem<K>();
         prob.l = (end - begin) + 1;
         prob.y = new double[prob.l];
         prob.x = new svm_node[prob.l];
@@ -45,9 +46,9 @@ public class SVMTrainer {
      * @param param
      * @return 
      */
-    public static <K> svm_model train(List<Instance<K>> instances, svm_parameter param) {
+    public static <K> svm_model<K> train(List<Instance<K>> instances, svm_parameter param) {
         //prepare svm_problem
-        svm_problem prob = prepareProblem(instances);
+        svm_problem<K> prob = prepareProblem(instances);
         
         String error_msg = svm.svm_check_parameter(prob, param);
 
@@ -70,7 +71,7 @@ public class SVMTrainer {
      * @param binary whether doing binary classification
      */
     public static <K> void doCrossValidation(List<Instance<K>> instances, svm_parameter param, int nr_fold, boolean binary) {
-        svm_problem prob = prepareProblem(instances);
+        svm_problem<K> prob = prepareProblem(instances);
         
         int i;
         int total_correct = 0;
@@ -145,7 +146,7 @@ public class SVMTrainer {
                 }
             }                                    
             
-            svm_model trainModel = train(trainingInstances, param);
+            svm_model<K> trainModel = train(trainingInstances, param);
             double[] predictions = SVMPredictor.predict(testingInstances, trainModel);
             for (int k = 0; k < predictions.length; k++) {
                 
@@ -177,7 +178,7 @@ public class SVMTrainer {
         System.out.println("FScore: " + 2 * precision * recall / (precision + recall));
     }
     
-    public static void saveModel(svm_model model, String filePath) throws IOException {
+    public static <K> void saveModel(svm_model<K> model, String filePath) throws IOException {
         svm.svm_save_model(filePath, model);
     }
 }
